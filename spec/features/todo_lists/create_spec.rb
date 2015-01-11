@@ -8,5 +8,8 @@ describe "Creating todo lists" do
 
 		fill_in "Title", with: "My todo list"
 		fill_in "Description", with: "Test 123"
+		click_button "Create Todo list"
+
+		expect(page).to have_content("My todo list")
 	end
 end
