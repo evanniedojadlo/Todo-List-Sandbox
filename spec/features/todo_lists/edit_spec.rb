@@ -8,7 +8,7 @@ describe "Editing todo lists" do
 		todo_list = options[:todo_list]
 
 		visit "/todo_lists"
-		within "#todo_list#{todo_list.id}" do
+		within "#todo_list_#{todo_list.id}" do
 		click_link "Edit"
 	end
 
@@ -19,16 +19,14 @@ describe "Editing todo lists" do
 
 
 
-
 	it "updates a todo list successfully with correct information" do
-
 		todo_list = TodoList.create(title: "Groceries", description: "Grocery list.")
 
 		update_todo_list todo_list: todo_list, 
-							title: "New title", 
-							description: "New description"
+						 title: "New title", 
+						 description: "New description"
 
-		todo_list.reload #normally used within Tests only
+		todo_list.reload 
 
 		expect(page).to have_content("Todo list was successfully updated")
 		expect(todo_list.title).to eq("New title")
