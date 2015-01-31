@@ -33,4 +33,13 @@ describe "Editing todo lists" do
 	end
 
 	#begin new tests here
+
+	it "displays an error with no title" do
+		update_todo_list todo_list: todo_list, title: ""
+		expect(page).to have_content("error")
+	end
+
+
+
+
 end
